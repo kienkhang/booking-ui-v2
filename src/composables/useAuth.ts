@@ -1,5 +1,6 @@
 import factory from '@/api/factory'
 import useAuthStore from '@/stores/auth'
+
 export default function useAuth() {
   // Import
   const api = factory.get('auth')
@@ -8,20 +9,23 @@ export default function useAuth() {
 
   // method
   const login = ({ email = '', password = '' }) => {
-    const { data, isFinished, error, execute } = api.login({ email, password })
+    const usedLogin = api.login({ email, password })
+    const { data, isFinished, error, execute } = usedLogin
 
-    execute()
     until(isFinished)
       .toBeTruthy()
       .then(() => {
-        if (error.value) {
-          return Promise.reject(error.value)
+        if (!!error.value === false) {
+          setAuth(data.value)
+          setToken(data?.value?.token?.access_token)
+        } else {
+          throw new Error('Lỗi khi gọi API')
         }
-        // Set auth and token if login successfull
-        setAuth(data.value)
-        setToken(data?.value?.token?.access_token)
-        return Promise.resolve(data.value)
       })
+    return {
+      ...usedLogin,
+      executeAPI: () => execute(),
+    }
   }
 
   return {
