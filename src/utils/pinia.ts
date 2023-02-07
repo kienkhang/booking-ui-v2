@@ -1,5 +1,5 @@
 import { defineStore, StoreGeneric, storeToRefs } from 'pinia'
-import { once, pick, omit } from 'lodash-es'
+import { once, pick } from 'lodash-es'
 type TCreatePiniaStateReturn<T> = {
   useStore: () => T
   disposeStore: () => void
@@ -19,7 +19,7 @@ export const createPiniaState = <T>(
     const usedStoreMethodName = Object.keys(usedStore).filter(
       (key: string) =>
         typeof usedStore[key as TKeyOfUsedStore] === 'function' &&
-        !key.startsWith('&') &&
+        !key.startsWith('$') &&
         !key.startsWith('_')
     ) as string[]
     return {
