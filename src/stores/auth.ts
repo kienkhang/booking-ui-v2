@@ -1,6 +1,6 @@
-import factory from '@/api/factory'
 const useAuthStore = defineStore('auth', () => {
   // Hook
+
   // const { setToken } = useAccountStorage()
 
   // State

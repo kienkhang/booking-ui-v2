@@ -8,10 +8,7 @@
 //   return { count, doubleCount, increment }
 // })
 
-import { createPiniaState } from '@/utils/pinia'
-
-//
-// })
+import usePinia from '@/composables/usePinia'
 
 const useCounter = () => {
   const count = ref(0)
@@ -23,7 +20,7 @@ const useCounter = () => {
   return { count, doubleCount, increment }
 }
 
-const { useStore: useCounterStore, disposeStore } = createPiniaState('count', useCounter)
+const { useStore: useCounterStore, disposeStore } = usePinia('count', useCounter)
 
 export { disposeStore }
 export default useCounterStore
