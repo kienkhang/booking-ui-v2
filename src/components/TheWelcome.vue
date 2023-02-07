@@ -7,16 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import useAuthStore from '@/stores/auth'
-
 const { login } = useAuth()
 const { isLoggedIn } = useAccountStorage()
 const onLogin = ({ email = '', password = '' }) => {
-  const { isLoading } = login({ email, password })
-  if (isLoading) {
-    console.log('🐔🦢 ~ onLogin ~ isLoading True', isLoading.value)
-  }
-  console.log('🐔🦢 ~ onLogin ~ isLoading False', isLoading.value)
+  const { isLoading, executeAPI } = login({ email, password })
+  executeAPI()
 }
 </script>
 
