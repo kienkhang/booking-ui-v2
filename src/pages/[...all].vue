@@ -89,12 +89,27 @@
     </div>
   </div>
   <div class="mt-6 text-center">
-    <button class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">
+    <button
+      class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md"
+      @click="navigate"
+    >
       Go back
     </button>
   </div>
 </template>
+<script lang="ts" setup>
+definePage({
+  meta: {
+    layout: 404,
+    requiresAuth: false,
+  },
+})
+const router = useRouter()
 
+const navigate = () => {
+  router.push('/')
+}
+</script>
 <style scoped>
 .emoji-404 {
   position: relative;
@@ -114,7 +129,7 @@
 }
 </style>
 
-<route lang="yaml">
+<!-- <route lang="yaml">
 meta:
   layout: 404
-</route>
+</route> -->
