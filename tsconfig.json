@@ -18,8 +18,10 @@
       "vitest",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
-      // Giúp cho import.meta.env
-      "vite/client"
+      // Support for import.meta.env
+      "vite/client",
+      // Support Unplugin Icon
+      "unplugin-icons/types/vue"
     ],
     "noEmit": true,
     "noUnusedLocals": false,
@@ -28,6 +30,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "typed-router.d.ts"],
   "exclude": ["dist", "node_modules", "cypress"]
 }
