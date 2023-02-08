@@ -38,7 +38,7 @@ instance.interceptors.response.use(
 export const useGet = ({ url = '', data = {}, headers = {}, requiredToken = false } = {}) => {
   let fullHeaders: any = { ...headers }
   //   If having token => add Authorization with token
-  requiredToken && (fullHeaders['Authorization'] = getToken())
+  requiredToken && (fullHeaders['Authorization'] = `Bearer ${getToken()}`)
   url
   const usedAxios = useAxios(url, { data, headers: fullHeaders, method: 'GET' }, instance, {
     // Nếu immediate là false -> chạy execute() không cần truyền url vào
@@ -52,7 +52,7 @@ export const useGet = ({ url = '', data = {}, headers = {}, requiredToken = fals
 export const usePost = ({ url = '', data = {}, headers = {}, requiredToken = false } = {}) => {
   let fullHeaders: any = { ...headers }
   //   If having token => add Authorization with token
-  requiredToken && (fullHeaders['Authorization'] = getToken())
+  requiredToken && (fullHeaders['Authorization'] = `Bearer ${getToken()}`)
   url
   const usedAxios = useAxios(url, { data, headers: fullHeaders, method: 'POST' }, instance, {
     // Nếu immediate là false -> chạy execute() không cần truyền url vào
@@ -66,7 +66,7 @@ export const usePost = ({ url = '', data = {}, headers = {}, requiredToken = fal
 export const usePut = ({ url = '', data = {}, headers = {}, requiredToken = false } = {}) => {
   let fullHeaders: any = { ...headers }
   //   If having token => add Authorization with token
-  requiredToken && (fullHeaders['Authorization'] = getToken())
+  requiredToken && (fullHeaders['Authorization'] = `Bearer ${getToken()}`)
   url
   const usedAxios = useAxios(url, { data, headers: fullHeaders, method: 'PUT' }, instance, {
     // Nếu immediate là false -> chạy execute() không cần truyền url vào
@@ -80,7 +80,7 @@ export const usePut = ({ url = '', data = {}, headers = {}, requiredToken = fals
 export const useDelete = ({ url = '', data = {}, headers = {}, requiredToken = false } = {}) => {
   let fullHeaders: any = { ...headers }
   //   If having token => add Authorization with token
-  requiredToken && (fullHeaders['Authorization'] = getToken())
+  requiredToken && (fullHeaders['Authorization'] = `Bearer ${getToken()}`)
   url
   const usedAxios = useAxios(url, { data, headers: fullHeaders, method: 'DELETE' }, instance, {
     // Nếu immediate là false -> chạy execute() không cần truyền url vào
