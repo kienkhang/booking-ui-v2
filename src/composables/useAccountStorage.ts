@@ -10,7 +10,7 @@ export default function useAccountStorage() {
   const setToken = (value: string) => set(TOKEN, value)
   const removeToken = () => remove(TOKEN)
 
-  const isLoggedIn = !!getToken()
+  const isLoggedIn = () => !!getToken()
 
   return {
     getToken,
