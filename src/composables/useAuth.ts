@@ -5,6 +5,7 @@ export default function useAuth() {
   const api = factory.get('auth')
   const { setAuth } = useAuthStore()
   const { setToken, removeToken } = useAccountStorage()
+  const router = useRouter()
   // method
   // --------------------------------
   const login = (data?: { email: string; password: string }) => {
@@ -17,6 +18,7 @@ export default function useAuth() {
         if (!!error.value === false) {
           setAuth(respData.value)
           setToken(respData?.value?.token?.access_token)
+          router.push('/home')
         } else {
           throw new Error(error.value?.response?.data.message!)
         }
