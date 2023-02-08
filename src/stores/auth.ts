@@ -9,7 +9,7 @@ const useAuthStore = defineStore('auth', () => {
 
   // methods
 
-  const setAuth = (authAccount: Account) => {
+  const setAuth = (authAccount: Account | null) => {
     account.value = authAccount
   }
 
