@@ -19,9 +19,8 @@
 import useAuthStore from '@/stores/auth'
 import useCounterStore from '@/stores/counter'
 import { storeToRefs } from 'pinia'
-import { _definePage } from 'unplugin-vue-router/runtime'
 
-_definePage({
+definePage({
   meta: {
     requiresAuth: true,
     layout: 'main',
@@ -39,8 +38,8 @@ const navigate = () => {
 }
 </script>
 
-<route lang="yaml">
+<!-- <route lang="yaml">
 meta:
   layout: main
   requiresAuth: true
-</route>
+</route> -->
