@@ -1,4 +1,4 @@
-import { type UserModule } from '~/types'
+import { type UserModule } from '@/types'
 import { generateClasses } from '@formkit/themes'
 import { plugin, defaultConfig, DefaultConfigOptions } from '@formkit/vue'
 
