@@ -10,6 +10,7 @@ declare module 'vue-router' {
     isAdmin?: boolean
     // must be declared by every route
     requiresAuth: boolean
+    layout: string | number
   }
 }
 
@@ -39,12 +40,15 @@ const navigationGuard = (router: Router) => {
 
     // Kiểm tra Trang đó có ( Auth + Đã Login ) hay chưa -> Chuyển đến trang login
     // Nếu đã login thì cho vào bình thường qua hàm next
-    if (!!requiresAuth === true && !isLoggedIn) {
+    if (!!requiresAuth === true && !isLoggedIn()) {
+      // const isLogged = isLoggedIn()
+      // if (isLogged) next({ path: '/login' })
+      // else next()
       next({ path: '/login' })
     } else next()
     // Mỗi lần reload lại hoặc chuyển đến một trang nào đó
     // Nếu token tồn tại mà account trong Store chưa có thì gọi API để gọi API set Account vào Store
-    if (isLoggedIn && account.value === null) {
+    if (!!account.value === false && isLoggedIn()) {
       executeAPI()
     }
   })
