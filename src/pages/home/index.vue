@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>This is home page</div>
-    <div class="text-lg font-bold text-purple-600">{{ account?.customer.full_name }}</div>
+    <div class="text-lg font-bold text-purple-600" v-show="account !== null">
+      {{ account?.customer.full_name }}
+    </div>
     <div class="text-lg font-bold">Count : {{ count }}</div>
     <div class="text-lg font-bold">Double Count : {{ doubleCount }}</div>
     <button class="p-2 rounded-md bg-green-600 text-white" @click="increment">Increment</button>
@@ -14,13 +16,21 @@
 </template>
 
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
 import useAuthStore from '@/stores/auth'
 import useCounterStore from '@/stores/counter'
-const router = useRouter()
+import { storeToRefs } from 'pinia'
+import { _definePage } from 'unplugin-vue-router/runtime'
 
+_definePage({
+  meta: {
+    requiresAuth: true,
+    layout: 'main',
+  },
+})
+
+const router = useRouter()
 const store = useCounterStore()
-const { account } = useAuthStore()
+const { account } = storeToRefs(useAuthStore())
 
 const { increment, count, doubleCount } = store
 
