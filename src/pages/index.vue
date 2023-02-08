@@ -1,5 +1,7 @@
 <template>
-  <button @click="navigate">Go to Home Page</button>
+  <button @click="navigate" class="flex gap-2 p-2 rounded-md bg-red-400 items-center text-white">
+    <ILocalCoffee class="w-8 h-8"></ILocalCoffee> Go to Home Page
+  </button>
 </template>
 
 <script setup lang="ts">
