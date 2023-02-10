@@ -41,9 +41,6 @@ const navigationGuard = (router: Router) => {
     // Kiểm tra Trang đó có ( Auth + Đã Login ) hay chưa -> Chuyển đến trang login
     // Nếu đã login thì cho vào bình thường qua hàm next
     if (!!requiresAuth === true && !isLoggedIn()) {
-      // const isLogged = isLoggedIn()
-      // if (isLogged) next({ path: '/login' })
-      // else next()
       next({ path: '/login' })
     } else next()
     // Mỗi lần reload lại hoặc chuyển đến một trang nào đó
