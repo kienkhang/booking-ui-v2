@@ -37,3 +37,4 @@ interface Account {
     description: String
   }
 }
+export default Account
