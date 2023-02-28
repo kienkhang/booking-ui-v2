@@ -1,7 +1,19 @@
 <template>
   <FormKit type="form" @submit="onLogin" :actions="false">
-    <FormKit type="text" label="Email" name="email" validation="email|required"></FormKit>
-    <FormKit type="password" label="Password" name="password" validation="required"></FormKit>
+    <FormKit
+      v-model="loginForm.email"
+      type="text"
+      label="Email"
+      name="email"
+      validation="email|required"
+    ></FormKit>
+    <FormKit
+      v-model="loginForm.password"
+      type="password"
+      label="Password"
+      name="password"
+      validation="required"
+    ></FormKit>
     <FormKit
       name="login"
       :label="!isLoading ? 'Login' : 'X'"
@@ -18,9 +30,7 @@ const { login, logout } = useAuth()
 
 const loginForm = reactive({ email: '', password: '' })
 const { isLoading, executeAPI } = login(loginForm)
-const onLogin = (data: { email: string; password: string }) => {
-  loginForm.email = data.email
-  loginForm.password = data.password
+const onLogin = () => {
   executeAPI()
 }
 </script>
